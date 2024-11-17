@@ -11,7 +11,7 @@ int main(int argc, char *argv[]) {
     int minrand = 1;
     int maxrand = 100;
     // WRITE YOUR CODE HERE
-    if (argc != 3) {
+    if (argc != 2) {
         printf("Incorrect usage. You provided %d arguments. The correct number of arguments is 2\n", argc);
         return 0;
     }
