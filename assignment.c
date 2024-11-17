@@ -15,7 +15,7 @@ int main(int argc, char *argv[]) {
         printf("Incorrect usage. You provided %d arguments. The correct number of arguments is 2\n", argc-1);
         return 0;
     }
-    for (int i = 1; argv[i]; i++){
+    for (int i = 1; i < argc; i++){
         if (atoi(argv[i]) < 0) {
             printf("Incorrect usage. The parameters you provided are not positive integers");
             return 0;
@@ -45,9 +45,9 @@ int main(int argc, char *argv[]) {
     }
     for (int i = 0; i < nrows; i++) {
         for (int j = 0; j < ncols; j++) {
-            fprintf(pFile, "%d ", matrix[i][j]);
+            fprintf(pFile, "%3d", matrix[i][j]);
             if (j < ncols - 1) {
-                fprintf(pFile, " "); // Add space between elements, but not at the end of the row
+                fprintf(pFile, " ");
             }
         }
         if (i < nrows - 1) {
