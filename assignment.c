@@ -11,7 +11,7 @@ int main(int argc, char *argv[]) {
     int minrand = 1;
     int maxrand = 100;
     // WRITE YOUR CODE HERE
-    if (argc != 2) {
+    if (argc != 3) {
         printf("Incorrect usage. You provided %d arguments. The correct number of arguments is 2\n", argc);
         return 0;
     }
@@ -46,8 +46,13 @@ int main(int argc, char *argv[]) {
     for (int i = 0; i < nrows; i++) {
         for (int j = 0; j < ncols; j++) {
             fprintf(pFile, "%d ", matrix[i][j]);
+            if (j < ncols - 1) {
+                fprintf(pFile, " "); // Add space between elements, but not at the end of the row
+            }
         }
-        fprintf(pFile, ("\n"));
+        if (i < nrows - 1) {
+            fprintf(pFile, "\n"); 
+        };
     }
     fprintf(pFile, ("\r"));
     fclose(pFile);
