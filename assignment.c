@@ -10,9 +10,46 @@ int main(int argc, char *argv[]) {
     srand(time(NULL));
     int minrand = 1;
     int maxrand = 100;
-
     // WRITE YOUR CODE HERE
-    
+    if (argc != 2) {
+        printf("Incorrect usage. You provided %d arguments. The correct number of arguments is 2\n", argc);
+        return 0;
+    }
+    for (int i = 1; argv[i]; i++){
+        if (atoi(argv[i]) < 0) {
+            printf("Incorrect usage. The parameters you provided are not positive integers");
+            return 0;
+        }
+    }
+    int nrows = atoi(argv[1]);
+    int ncols = atoi(argv[2]);
 
+    // int matrix[nrows][ncols];
+
+    int **matrix = malloc(nrows * sizeof(int *));
+    for (int i = 0; i < nrows; i++) {
+        matrix[i] = malloc(ncols * sizeof(int));
+    }
+
+    for (int i = 0; i < nrows; i++) {
+        for (int j = 0; j < ncols; j++) {
+            matrix[i][j] = rand() % (maxrand - minrand + 1) +
+            minrand;
+        }
+    }
+    FILE *pFile;
+    pFile = fopen("matrix.txt", "w");
+    if (pFile == NULL) {
+        printf("Failed to open file");
+        return -1;
+    }
+    for (int i = 0; i < nrows; i++) {
+        for (int j = 0; j < ncols; j++) {
+            fprintf(pFile, "%d ", matrix[i][j]);
+        }
+        fprintf(pFile, ("\n"));
+    }
+    fprintf(pFile, ("\r"));
+    fclose(pFile);
     return 0;
 }
