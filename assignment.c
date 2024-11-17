@@ -12,7 +12,7 @@ int main(int argc, char *argv[]) {
     int maxrand = 100;
     // WRITE YOUR CODE HERE
     if (argc != 2) {
-        printf("Incorrect usage. You provided %d arguments. The correct number of arguments is 2\n", argc);
+        printf("Incorrect usage. You provided %d arguments. The correct number of arguments is 2\n", argc-1);
         return 0;
     }
     for (int i = 1; argv[i]; i++){
